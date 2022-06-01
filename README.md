@@ -12,13 +12,13 @@ package](chart_examples/mae_example_plots.png)
 ## Installing maecharts
 
 `maecharts` is not on CRAN, so you will have to install it directly from
-DevOps using `remotes`.
+DevOps using `devtools`.
 
 If you do not have the `remotes` package installed, you will have to run
 the first line in the code below as well.
 
-    # install.packages('remotes')
-    remotes::install_git("https://dev.azure.com/dhhs-crt/ANALYTICS%20DIME%20ICCOM/_git/maecharts", git = "external")
+    # install.packages('devtools')
+    devtools::install_github('indraparta/maecharts')
 
 ## Using the functions
 
