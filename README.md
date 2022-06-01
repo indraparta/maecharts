@@ -185,7 +185,9 @@ Titanic %>%
   summarise(n = sum(n)) %>%
   ungroup() %>%
   mutate(legend = paste(Survived, Sex),
-         legend = factor(legend, levels = c("No Female", "Yes Female", "No Male", "Yes Male"), labels = c("No ", "Yes ", "No", "Yes"))) %>%
+         legend = factor(legend, 
+                         levels = c("No Female", "Yes Female", "No Male", "Yes Male"), 
+                         labels = c("No ", "Yes ", "No", "Yes"))) %>%
   ggplot() +
   geom_col(aes(x = Class, y = n, fill = legend)) +
   facet_wrap(~Sex) +

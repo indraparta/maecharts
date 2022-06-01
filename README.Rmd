@@ -94,7 +94,7 @@ iris %>%
 
 ```
 
-![](chart_examples/iris_1.png)
+![](chart_examples/iris_1.png){width=650px height=450px}
 If we want to highlight all 3 colours then we just add `scale_colour_mae(num_highlight_colours = 3)`
 
 ```{r}
@@ -108,7 +108,7 @@ iris %>%
 
 ```
 
-![](chart_examples/iris_2.png)
+![](chart_examples/iris_2.png){width=650px height=450px}
 
 If we want to compare two distinct groups of data (with subgroups) we can use the `scale_colour_mae(type = "constrast")` option 
 
@@ -132,7 +132,7 @@ t <- Titanic %>%
   
 ```
 
-![](chart_examples/titanic_1.png)
+![](chart_examples/titanic_1.png){width=650px height=450px}
 
 There is two things I want to change about this chart, I would like the legend to be on the bottom and the colours to be reversed (dark colours beneath light colours). 
 
@@ -146,7 +146,9 @@ Titanic %>%
   summarise(n = sum(n)) %>%
   ungroup() %>%
   mutate(legend = paste(Survived, Sex),
-         legend = factor(legend, levels = c("No Female", "Yes Female", "No Male", "Yes Male"), labels = c("No ", "Yes ", "No", "Yes"))) %>%
+         legend = factor(legend, 
+                         levels = c("No Female", "Yes Female", "No Male", "Yes Male"), 
+                         labels = c("No ", "Yes ", "No", "Yes"))) %>%
   ggplot() +
   geom_col(aes(x = Class, y = n, fill = legend)) +
   facet_wrap(~Sex) +
@@ -157,4 +159,4 @@ Titanic %>%
   
 ```
 
-![](chart_examples/titanic_2.png)
+![](chart_examples/titanic_2.png){width=650px height=450px}
