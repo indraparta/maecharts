@@ -1,0 +1,18 @@
+Package: maecharts
+Title: ggplot functionality for the Modelling and Analytical Epidemiology (MAE) team
+Version: 0.0.0.9000
+Authors@R: 
+    person("Indra", "Parta", , "indra.parta@health.vic.gov.au", role = c("aut", "cre"),
+           comment = c(ORCID = "YOUR-ORCID-ID"))
+Description: This package allows users to easily create and save DIME themed charts for publication
+License: GPL (>= 3)
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.2
+Imports:
+    tidyverse,
+    showtext,
+    pins
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
