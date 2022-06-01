@@ -119,9 +119,9 @@ titles and added the `theme_mae()` to it (see above):
   - `save_filepath`: The type of data being charted. Three options are
     available: “categorical”, “sequential” and “contrast”.
 
-### examples
+## examples
 
-## categorical data
+### categorical data
 
 A quick look at how each option works. The default options will
 highlight all two colours in the chart below, greying out the last
@@ -150,7 +150,7 @@ iris %>%
 
 ![](chart_examples/iris_2.png)
 
-## contrasting data
+### contrasting data
 
 If we want to compare two distinct groups of data (with subgroups) we
 can use the `scale_colour_mae(type = "constrast")` option
