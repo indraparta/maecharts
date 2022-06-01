@@ -12,10 +12,10 @@ package](chart_examples/mae_example_plots.png)
 ## Installing maecharts
 
 `maecharts` is not on CRAN, so you will have to install it directly from
-DevOps using `devtools`.
+github using `devtools`.
 
-If you do not have the `remotes` package installed, you will have to run
-the first line in the code below as well.
+If you do not have the `devtools` package installed, you will have to
+run the first line in the code below as well.
 
     # install.packages('devtools')
     devtools::install_github('indraparta/maecharts')
@@ -119,6 +119,10 @@ titles and added the `theme_mae()` to it (see above):
   - `save_filepath`: The type of data being charted. Three options are
     available: “categorical”, “sequential” and “contrast”.
 
+### examples
+
+## categorical data
+
 A quick look at how each option works. The default options will
 highlight all two colours in the chart below, greying out the last
 species (virginica)
@@ -145,6 +149,8 @@ iris %>%
 ```
 
 ![](chart_examples/iris_2.png)
+
+## contrasting data
 
 If we want to compare two distinct groups of data (with subgroups) we
 can use the `scale_colour_mae(type = "constrast")` option
