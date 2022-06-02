@@ -13,7 +13,7 @@ scale_colour_mae(
 \arguments{
 \item{num_highlight_colours}{The number of colours to highlight in your chart (categorical data only). The maximum is 3 with additional colours defaulting to grey.}
 
-\item{direction}{Use argument direction = F to reverse the colour palette,}
+\item{direction}{Use argument direction = F to reverse the colour palette.}
 
 \item{type}{The type of data being charted. Three options are available: "categorical", "sequential" and "contrast".}
 
@@ -44,9 +44,14 @@ Titanic \%>\%
   as_tibble() \%>\%
   group_by(Class, Survived, Sex) \%>\%
   summarise(n = sum(n)) \%>\%
+  ungroup() \%>\%
+  mutate(legend = paste(Survived, Sex),
+         legend = factor(legend, levels = c("No Female", "Yes Female", "No Male", "Yes Male"), labels = c("No ", "Yes ", "No", "Yes"))) \%>\%
   ggplot() +
-  geom_col(aes(x = Class, y = n, fill = interaction(Survived,Sex))) +
+  geom_col(aes(x = Class, y = n, fill = legend)) +
   facet_wrap(~Sex) +
-  scale_fill_mae(type = "contrast")
-
+  scale_fill_mae(type = "contrast", direction = F) +
+  theme_mae() +
+  labs(title = "Survivors of the titanic", subtitle = "By sex and passenger class",
+       x = "", y = "")
 }

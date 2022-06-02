@@ -5,9 +5,9 @@
 \title{Arrange alignment and save MAE ggplot chart}
 \usage{
 mae_save(
-  plot_name,
+  x,
   source_name,
-  save_filepath = file.path(Sys.getenv("TMPDIR"), "tmp-nc.png"),
+  plot_name,
   width_pixels = 640,
   height_pixels = 450,
   logo_image_path = file.path(system.file("data", package = "maecharts"),
@@ -15,11 +15,11 @@ mae_save(
 )
 }
 \arguments{
-\item{plot_name}{The variable name of the plot you have created that you want to format and save}
+\item{x}{The name of the plot you want to export to rsconnect}
 
 \item{source_name}{The text you want to come after the text 'Source:' in the bottom left hand side of your side}
 
-\item{save_filepath}{Exact filepath that you want the plot to be saved to}
+\item{plot_name}{the name of your plot - try to use as few characters as possible as rsconnect allows a maximum of 64 characters for pins}
 
 \item{width_pixels}{Width in pixels that you want to save your chart to - defaults to 640}
 
@@ -36,9 +36,9 @@ Running this function will save your plot with the correct guidelines for public
 It will left align your title, subtitle and source, add the MAE blocks at the bottom right and save it to your specified location.
 }
 \examples{
-finalise_plot(plot_name = myplot,
+finalise_plot(x = myplot,
 source = "The source for my data",
-save_filepath = "filename_that_my_plot_should_be_saved_to-nc.png",
+plot_name = "rsconnect_plot",
 width_pixels = 640,
 height_pixels = 450,
 logo_image_path = "logo_image_filepath.png"
