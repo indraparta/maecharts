@@ -28,7 +28,8 @@ create_footer <- function (source_name, logo_image_path) {
 #' Arrange alignment and save MAE ggplot chart
 #'
 #' Running this function will save your plot with the correct guidelines for publication.
-#' It will left align your title, subtitle and source, add the MAE blocks at the bottom right and save it to your specified location.
+#' It will left align your title, subtitle and source, add the MAE blocks at the bottom right.
+#' This function will save your plot as a pin on rsconnect which will then be automatically included in the chart_upload_table rmd for download.
 #' @param x The name of the plot you want to export to rsconnect
 #' @param source_name The text you want to come after the text 'Source:' in the bottom left hand side of your side
 #' @param plot_name the name of your plot - try to use as few characters as possible as rsconnect allows a maximum of 64 characters for pins
