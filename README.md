@@ -133,8 +133,9 @@ iris %>%
     labs(x = "Sepal width", y = "Sepal height")
 ```
 
-<img src="chart_examples/iris_1.png" width="650" height="450" /> If we
-want to highlight all 3 colours then we just add
+<img src="chart_examples/iris_1.png" width="650" height="450" />
+
+If we want to highlight all 3 colours then we just add
 `scale_colour_mae(num_highlight_colours = 3)`
 
 ``` r

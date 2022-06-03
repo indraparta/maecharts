@@ -67,7 +67,7 @@ mae_save <- function(x,
 
   ## Return (invisibly) a copy of the graph. Can be assigned to a
   ## variable or silently ignored.
-  pins::pin_write(board_rsconnect(),
+  pins::pin_write(pins::board_rsconnect(),
                   x = plot_grid,
                   name = paste("mae", plot_name, width_pixels, height_pixels, sep = "-"))
 }
