@@ -46,13 +46,11 @@ chart or bars for a bar chart, do not come out of the box from the
 
 Example of how it is used in a standard workflow:
 
-``` 
-iris_species <- iris %>%
- ggplot() +
- geom_point(aes(x = Sepal.Length, y = Sepal.Width, colour = Species)) +
- theme_mae()
- 
-```
+    iris_species <- iris %>%
+     ggplot() +
+     geom_point(aes(x = Sepal.Length, y = Sepal.Width, colour = Species)) +
+     theme_mae()
+     
 
 ### `mae_save`
 
@@ -64,26 +62,27 @@ iris_species <- iris %>%
     need to be explicitly set and three that are defaults unless you
     overwrite them.
 
-Here are the function arguments: `finalise_plot(plot_name, source_name,
-save_filepath, width_pixels, height_pixels, logo_image_path)`
+Here are the function arguments:
+`finalise_plot(plot_name, source_name, save_filepath, width_pixels, height_pixels, logo_image_path)`
 
-  - `plot_name`: the variable name that you have called your plot, for
+-   `plot_name`: the variable name that you have called your plot, for
     example for the chart example above `plot_name` would be
     `"iris_species"`  
-  - `source_name`: the source text that you want to appear at the bottom
-    left corner of your plot. It will automatically add the text `"Data
-    source:"` before it, so for example `source = "Australian
-    Immunisation Register (AIR)"` would display `"Data source:
-    Australian Immunisation Register"` to the bottom left of your chart.
-  - `save_filepath`: the precise filepath that you want your graphic to
+-   `source_name`: the source text that you want to appear at the bottom
+    left corner of your plot. It will automatically add the text
+    `"Data source:"` before it, so for example
+    `source = "Australian Immunisation Register (AIR)"` would display
+    `"Data source: Australian Immunisation Register"` to the bottom left
+    of your chart.
+-   `save_filepath`: the precise filepath that you want your graphic to
     save to, including the `.png` extension at the end. This does depend
     on your working directory and if you are in a specific R project. An
     example of a relative filepath would be: `/charts/line_chart.png`.  
-  - `width_pixels`: this is set to 640px by default, so only call this
+-   `width_pixels`: this is set to 640px by default, so only call this
     argument and specify the width you want your chart to be.
-  - `height_pixels`: this is set to 450px by default, so only call this
+-   `height_pixels`: this is set to 450px by default, so only call this
     argument and specify the height you want your chart to be.
-  - `logo_image_path`: this argument specifies the path for the
+-   `logo_image_path`: this argument specifies the path for the
     image/logo in the bottom right corner of the plot. The default is
     for the Victorian Department of Health PNG file , so do not specify
     the argument if you want it to appear without a logo. If you want to
@@ -106,17 +105,15 @@ titles and added the `theme_mae()` to it (see above):
 3.  `scale_colour_mae` and `scale_fill_mae`: will add the MAE colour
     palette to your charts, it includes three separate colour palettes
     depending on the type of data being visualised (“categorical”,
-    “sequential” and “contrast”). The function has three arguments
-    which all contain default values.
+    “sequential” and “contrast”). The function has three arguments which
+    all contain default values.
 
-<!-- end list -->
-
-  - `num_highlight_colours`: The number of colours to highlight in your
+-   `num_highlight_colours`: The number of colours to highlight in your
     chart (categorical data only). The maximum is 3 with additional
     colours defaulting to grey, defaults to `2`.
-  - `direction`: The argument `direction = F` will reverse the colour
+-   `direction`: The argument `direction = F` will reverse the colour
     palette.
-  - `save_filepath`: The type of data being charted. Three options are
+-   `save_filepath`: The type of data being charted. Three options are
     available: “categorical”, “sequential” and “contrast”.
 
 ## examples
@@ -136,8 +133,9 @@ iris %>%
     labs(x = "Sepal width", y = "Sepal height")
 ```
 
-![](chart_examples/iris_1.png) If we want to highlight all 3 colours
-then we just add `scale_colour_mae(num_highlight_colours = 3)`
+<img src="chart_examples/iris_1.png" width="650" height="450" /> If we
+want to highlight all 3 colours then we just add
+`scale_colour_mae(num_highlight_colours = 3)`
 
 ``` r
 iris %>%
@@ -148,7 +146,7 @@ iris %>%
     labs(x = "Sepal width", y = "Sepal height")
 ```
 
-![](chart_examples/iris_2.png)
+<img src="chart_examples/iris_2.png" width="650" height="450" />
 
 ### contrasting data
 
@@ -173,7 +171,7 @@ t <- Titanic %>%
   labs(title = "Survivors of the titanic", subtitle = "By sex and passenger class", x = "", y = "")
 ```
 
-![](chart_examples/titanic_1.png)
+<img src="chart_examples/titanic_1.png" width="650" height="450" />
 
 There is two things I want to change about this chart, I would like the
 legend to be on the bottom and the colours to be reversed (dark colours
@@ -203,4 +201,4 @@ Titanic %>%
   labs(title = "Survivors of the titanic", subtitle = "By sex and passenger class", x = "", y = "")
 ```
 
-![](chart_examples/titanic_2.png)
+<img src="chart_examples/titanic_2.png" width="650" height="450" />

@@ -98,7 +98,8 @@ iris %>%
 
 ```
 
-![](chart_examples/iris_1.png){width=650px height=450px}
+![](chart_examples/iris_1.png){width=650 height=450}
+
 If we want to highlight all 3 colours then we just add `scale_colour_mae(num_highlight_colours = 3)`
 
 ```{r}
@@ -112,7 +113,7 @@ iris %>%
 
 ```
 
-![](chart_examples/iris_2.png){width=650px height=450px}
+![](chart_examples/iris_2.png){width=650 height=450}
 
 ### contrasting data
 
@@ -138,7 +139,7 @@ t <- Titanic %>%
   
 ```
 
-![](chart_examples/titanic_1.png){width=650px height=450px}
+![](chart_examples/titanic_1.png){width=650 height=450}
 
 There is two things I want to change about this chart, I would like the legend to be on the bottom and the colours to be reversed (dark colours beneath light colours). 
 
@@ -165,4 +166,4 @@ Titanic %>%
   
 ```
 
-![](chart_examples/titanic_2.png){width=650px height=450px}
+![](chart_examples/titanic_2.png){width=650 height=450}
