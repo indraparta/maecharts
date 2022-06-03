@@ -65,9 +65,9 @@ mae_save <- function(x,
 
   #Draw your left-aligned grid
   plot_left_aligned <- left_align(x, c("subtitle", "title", "caption"))
-  plot_grid <- ggpubr::ggarrange(plot_left_aligned, footer,
+  plot_grid <- cowplot::plot_grid(plot_left_aligned, footer,
                                  ncol = 1, nrow = 2,
-                                 heights = c(1, 0.045 / (height_pixels / 450)))
+                                 rel_heights = c(1, 0.045 / (height_pixels / 450)))
 
   ## Return (invisibly) a copy of the graph. Can be assigned to a
   ## variable or silently ignored.

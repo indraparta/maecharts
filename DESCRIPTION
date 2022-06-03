@@ -13,7 +13,7 @@ Imports:
     ggplot2, 
     grid,
     png,
-    ggpubr,  
+    cowplot,
     sysfonts,
     showtext,
     pins
