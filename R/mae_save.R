@@ -39,14 +39,18 @@ create_footer <- function (source_name, logo_image_path) {
 #'  which needs to be a PNG file - defaults to DH logo image that sits within the data folder of your package
 #' @return (Invisibly) an updated ggplot object.
 
-#' @keywords finalise_plot
+#' @keywords mae_save
 #' @examples
-#' finalise_plot(x = myplot,
-#' source = "The source for my data",
-#' plot_name = "rsconnect_plot",
-#' width_pixels = 640,
-#' height_pixels = 450,
-#' logo_image_path = "logo_image_filepath.png"
+#' myplot <- ggplot(iris) +
+#'              geom_point(aes(x = Sepal.Width, y = Sepal.Length))
+#'
+#'
+#' mae_save(x = myplot,
+#'          source = "The source for my data",
+#'          plot_name = "rsconnect_plot",
+#'          width_pixels = 640,
+#'          height_pixels = 450,
+#'          logo_image_path = "path_to_logo.png
 #' )
 #'
 #' @export
@@ -55,7 +59,7 @@ mae_save <- function(x,
                      plot_name,
                      width_pixels = 640,
                      height_pixels = 450,
-                     logo_image_path = file.path(system.file("data", package = 'maecharts'),"dh-logo.png")) {
+                     logo_image_path = file.path(system.file("extdata", package = 'maecharts'),"dh-logo.png")) {
 
   footer <- create_footer(paste0("Data source: ", source_name), logo_image_path)
 

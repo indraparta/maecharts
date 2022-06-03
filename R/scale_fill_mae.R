@@ -90,6 +90,7 @@ mae_pal <- function(
 #' This argument adds the MAE colour palette to ggplot charts. The MAE colour palette is designed to be perceived by viewers with common forms of colour blindness.
 #'
 #' @usage
+#'
 #' scale_fill_mae(
 #'   num_highlight_colours = 2.
 #'   direction = T,

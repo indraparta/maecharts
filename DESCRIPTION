@@ -10,7 +10,11 @@ Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.2
 Imports:
-    tidyverse,
+    ggplot2, 
+    grid,
+    png,
+    ggpubr,  
+    sysfonts,
     showtext,
     pins
 Suggests: 

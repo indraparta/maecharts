@@ -10,7 +10,7 @@ mae_save(
   plot_name,
   width_pixels = 640,
   height_pixels = 450,
-  logo_image_path = file.path(system.file("data", package = "maecharts"),
+  logo_image_path = file.path(system.file("extdata", package = "maecharts"),
     "dh-logo.png")
 )
 }
@@ -33,16 +33,7 @@ which needs to be a PNG file - defaults to DH logo image that sits within the da
 }
 \description{
 Running this function will save your plot with the correct guidelines for publication.
-It will left align your title, subtitle and source, add the MAE blocks at the bottom right and save it to your specified location.
+It will left align your title, subtitle and source, add the MAE blocks at the bottom right.
+This function will save your plot as a pin on rsconnect which will then be automatically included in the chart_upload_table rmd where you can easily download your chart outside of the VM.
 }
-\examples{
-finalise_plot(x = myplot,
-source = "The source for my data",
-plot_name = "rsconnect_plot",
-width_pixels = 640,
-height_pixels = 450,
-logo_image_path = "logo_image_filepath.png"
-)
-
-}
-\keyword{finalise_plot}
+\keyword{mae_save}
