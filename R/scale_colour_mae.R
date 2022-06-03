@@ -2,7 +2,7 @@ mae_categorical <- list(
 
   "blue"   = "#0e6ca6",
   "red"    = "#cc1219",
-  "purple" = "#963484",
+  "purple" = "#5f4b8b",
   "grey"   = "#a9a9a9",
   "grey"   = "#a9a9a9",
   "grey"   = "#a9a9a9"
