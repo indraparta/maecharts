@@ -61,7 +61,7 @@ mae_save_local <- function(x,
                      height_pixels = 450,
                      logo_image_path = file.path(system.file("extdata", package = 'maecharts'),"dh-logo.png")) {
 
-  footer <- create_footer(paste0("Data source: ", source_name), logo_image_path)
+  footer <- create_footer(source_name, logo_image_path)
 
   #Draw your left-aligned grid
   plot_left_aligned <- left_align(x, c("subtitle", "title", "caption"))
