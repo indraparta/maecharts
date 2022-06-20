@@ -31,11 +31,6 @@ mae_contrast <- list(
 
 )
 
-mae_blue <- "#0e6ca6"
-mae_red <- "#cc1219"
-mae_purple <-"#5f4b8b"
-mae_grey <- "#a9a9a9"
-mae_darkblue <- "#091540"
 
 mae_pal <- function(
   num_highlight_colours = 2,
