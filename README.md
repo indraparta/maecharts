@@ -20,6 +20,12 @@ run the first line in the code below as well.
     # install.packages('devtools')
     devtools::install_github('indraparta/maecharts')
 
+    mae_blue <- "#0e6ca6"
+    mae_red <- "#cc1219"
+    mae_purple <-"#5f4b8b"
+    mae_grey <- "#a9a9a9"
+    mae_darkblue <- "#091540"
+
 ## Using the functions
 
 The package has four functions for plots: `theme_mae()`, `mae_save()`,
