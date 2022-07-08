@@ -52,12 +52,12 @@ mae_pal <- function(
 
     if (num_highlight_colours == 1 & type == "categorical") {
       colours[c(2, 3)] <- "#a9a9a9"
-      colour_list <- colours
+      colour_list <- colours[1:n]
     } else if (num_highlight_colours == 2 & type == "categorical") {
       colours[c(3)] <- "#a9a9a9"
-      colour_list <- colours
+      colour_list <- colours[1:n]
     } else {
-      colour_list <- colours
+      colour_list <- colours[1:n]
     }
 
     if (n == 2 & type == "contrast") {
