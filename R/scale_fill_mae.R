@@ -112,7 +112,7 @@ mae_pal <- function(
 #' @export
 #'
 #' @examples
-#'
+#' \dontrun{
 #' Use categorical for distinct categories
 #' iris %>%
 #'   ggplot() +
@@ -140,6 +140,7 @@ mae_pal <- function(
 #'   theme_mae() +
 #'   labs(title = "Survivors of the titanic", subtitle = "By sex and passenger class",
 #'        x = "", y = "")
+#' }
 
 
 scale_fill_mae <- function(

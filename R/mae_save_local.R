@@ -1,27 +1,27 @@
 
 
 save_plot <- function (plot_grid, width, height, x) {
-  grid::grid.draw(plot_grid)
   #save it
   ggplot2::ggsave(filename = x,
                   plot=plot_grid, width=(width/72), height=(height/72),  bg="white")
 }
 
-#Left align text
-left_align <- function(x, pieces){
-  grob <- ggplot2::ggplotGrob(x)
-  n <- length(pieces)
-  grob$layout$l[grob$layout$name %in% pieces] <- 2
-  return(grob)
+
+create_footer <- function (source_name, logo_image_path) {
+  #Make the footer
+  footer <- grid::grobTree(grid::textGrob(source_name,
+                                          x = 0.004, hjust = 0, gp = grid::gpar(fontsize = 26, lineheight = .5, fontfamily = "VIC")),
+                           grid::rasterGrob(png::readPNG(logo_image_path), x = 1 - 0.04, y = 0.5))
+  return(footer)
+
 }
 
-create_footer <- function (source_name, logo_image_path, rel_ratio) {
-  #Make the footer
-  footer <- grid::grobTree(grid::linesGrob(x = grid::unit(c(0, 1), "npc"), y = grid::unit(1.1, "npc")),
-                           grid::textGrob(source_name,
-                                          x = 0.004, hjust = 0, gp = grid::gpar(fontsize=26, lineheight = .5)),
-                           grid::rasterGrob(png::readPNG(logo_image_path), x = 1 - (rel_ratio * 0.056)))
-  return(footer)
+
+create_line <- function() {
+
+  line <- grid::grobTree(grid::linesGrob(x = grid::unit(c(0, 1), "npc"), y = grid::unit(0.3, "npc"), gp = grid::gpar(col = 'lightgrey')))
+
+  return(line)
 
 }
 
@@ -38,7 +38,10 @@ create_footer <- function (source_name, logo_image_path, rel_ratio) {
 #' @param logo_image_path File path for the logo image you want to use in the right hand side of your chart,
 #'  which needs to be a PNG file - defaults to DH logo image that sits within the data folder of your package
 #' @return (Invisibly) an updated ggplot object.
-
+#'
+#'
+#' @importFrom patchwork plot_layout
+#'
 #' @keywords mae_save_local
 #' @examples
 #' myplot <- ggplot(iris) +
@@ -46,7 +49,7 @@ create_footer <- function (source_name, logo_image_path, rel_ratio) {
 #'
 #'
 #' mae_save_local(x = myplot,
-#'          source = "The source for my data",
+#'          source_name = "The source for my data",
 #'          save_file_path = "rsconnect_plot",
 #'          width_pixels = 640,
 #'          height_pixels = 450,
@@ -55,28 +58,25 @@ create_footer <- function (source_name, logo_image_path, rel_ratio) {
 #'
 #' @export
 mae_save_local <- function(x,
-                     source_name,
-                     save_file_path,
-                     width_pixels = 640,
-                     height_pixels = 450,
-                     logo_image_path = file.path(system.file("extdata", package = 'maecharts'),"dh-logo.png")) {
+                           source_name,
+                           save_file_path,
+                           width_pixels = 640,
+                           height_pixels = 450,
+                           logo_image_path = file.path(system.file("extdata", package = 'maecharts'),"dh-logo.png")) {
 
-  #this variable sets the relative height of the source so that it automatically wraps if the text is too long
-  rel_ratio = floor((nchar(source_name) / width_pixels) / 0.196) + 1
-  source_name <- str_wrap(source_name, width = width_pixels *  0.196 * (1 - ((rel_ratio - 1) * 0.122)))
 
   #error if character limit exceeded
-  if(rel_ratio > 2)
-    stop(paste0("Error: source_name exceeds character limit (", floor(pixel_width *  0.196 * (1 - ((2 - 1) * 0.122)) * 2), ")"))
+  if(length(source_name) > 154)
+    stop(paste0("Error: source_name exceeds character limit (130)"))
 
   #create footer
-  footer <- create_footer(source_name, logo_image_path, rel_ratio)
+  footer <- create_footer(source_name, logo_image_path)
+
+  #add line
+  line <- create_line()
 
   #Draw your left-aligned grid
-  plot_left_aligned <- left_align(x, c("subtitle", "title", "caption"))
-  plot_grid <- cowplot::plot_grid(plot_left_aligned, footer,
-                                  ncol = 1, nrow = 2,
-                                  rel_heights = c(1, 0.045 * rel_ratio / (height_pixels / 450)))
+  plot_grid <- x / line / footer + patchwork::plot_layout(nrow = 3, heights = c(1, 0.0045, 0.0045))
 
   ## Return (invisibly) a copy of the graph. Can be assigned to a
   ## variable or silently ignored.

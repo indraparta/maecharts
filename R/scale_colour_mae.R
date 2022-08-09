@@ -106,25 +106,29 @@ mae_pal <- function(
 #' @param ...
 #' Other arguments passed on to discrete_scale(), continuous_scale(), or binned_scale to control name, limits, breaks, labels and so forth.
 #'
+#' @import magrittr
 #'
 #' @return
 #' @export
 #'
 #' @examples
+#'\dontrun{
+#' #Use categorical for distinct categories
 #'
-#' Use categorical for distinct categories
 #' iris %>%
 #'   ggplot() +
 #'   geom_point(aes(x = Sepal.Width, y = Sepal.Length, colour = Species)) +
 #'   scale_colour_mae(type = "categorical")
 #'
-#' Use sequential for continuous data
+#' #Use sequential for continuous data
+#'
 #' diamonds %>%
 #'   ggplot() +
 #'   geom_point(aes(x = carat, y =  price, colour = clarity)) +
 #'   scale_colour_mae(type = "sequential")
 #'
-#' Use contrast for data with two distinct categories. Contrast supports 6 shades of two contrasting colours
+#' #Use contrast for data with two distinct categories. Contrast supports 6 shades of two contrasting colours
+#'
 #' Titanic %>%
 #'   as_tibble() %>%
 #'   group_by(Class, Survived, Sex) %>%
@@ -139,6 +143,7 @@ mae_pal <- function(
 #'   theme_mae() +
 #'   labs(title = "Survivors of the titanic", subtitle = "By sex and passenger class",
 #'        x = "", y = "")
+#'}
 
 
 

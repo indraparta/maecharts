@@ -10,6 +10,7 @@ theme_mae()
 This function allows you to add the mae theme to your ggplot graphics. Individual theme elements can be overwritten in subsequent ggplot code.
 }
 \examples{
+\dontrun{
 iris \%>\%
  ggplot() +
  geom_point(aes(x = Sepal.Length, y = Sepal.Width, colour = Species)) +
@@ -23,5 +24,6 @@ iris \%>\%
  geom_point(aes(x = Sepal.Length, y = Sepal.Width, colour = Species)) +
  theme_mae() +
  theme(legend.position = 'right')
+ }
 }
 \keyword{theme_mae}

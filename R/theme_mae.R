@@ -1,9 +1,15 @@
 #' Add mae theme to ggplot chart
 #'
 #' This function allows you to add the mae theme to your ggplot graphics. Individual theme elements can be overwritten in subsequent ggplot code.
+#'
 #' @keywords theme_mae
+#'
+#' @import magrittr
+#'
 #' @export
+#'
 #' @examples
+#' \dontrun{
 #'iris %>%
 #'  ggplot() +
 #'  geom_point(aes(x = Sepal.Length, y = Sepal.Width, colour = Species)) +
@@ -17,6 +23,7 @@
 #'  geom_point(aes(x = Sepal.Length, y = Sepal.Width, colour = Species)) +
 #'  theme_mae() +
 #'  theme(legend.position = 'right')
+#'  }
 
 theme_mae <- function() {
   font <- "VIC"
@@ -34,6 +41,7 @@ theme_mae <- function() {
                                           size=40,
                                           margin=ggplot2::margin(-6,0,0,0)),
     plot.caption = ggplot2::element_blank(),
+    plot.title.position = "plot",
     #This leaves the caption text element empty, because it is set elsewhere in the finalise plot function
 
     #Legend format

@@ -19,14 +19,11 @@ scale_fill_mae(
 
 \item{...}{Other arguments passed on to discrete_scale(), continuous_scale(), or binned_scale to control name, limits, breaks, labels and so forth.}
 }
-\value{
-
-}
 \description{
 This argument adds the MAE colour palette to ggplot charts. The MAE colour palette is designed to be perceived by viewers with common forms of colour blindness.
 }
 \examples{
-
+\dontrun{
 Use categorical for distinct categories
 iris \%>\%
   ggplot() +
@@ -54,4 +51,5 @@ Titanic \%>\%
   theme_mae() +
   labs(title = "Survivors of the titanic", subtitle = "By sex and passenger class",
        x = "", y = "")
+}
 }
