@@ -16,11 +16,12 @@ create_line <- function() {
 
 }
 
-#' Arrange alignment and save MAE ggplot chart
+#'  Align MAE ggplot chart
 #'
 #' Running this function will save your plot with the correct guidelines for publication.
 #' It will left align your title, subtitle and source, add the MAE blocks at the bottom right.
-#' This function will save your plot as a pin on rsconnect which will then be automatically included in the chart_upload_table rmd where you can easily download your chart outside of the VM.
+#' This function is useful for loading plots in rmarkdowns with the DH watermark
+#'
 #' @param x The name of the plot you want to export to rsconnect
 #' @param source_name The text you want to place in the bottom left hand side of your side of your chart add "Source: to the start of your string to specify a source"
 #' @param logo_image_path File path for the logo image you want to use in the right hand side of your chart,
@@ -30,20 +31,20 @@ create_line <- function() {
 #'
 #' @importFrom patchwork plot_layout
 #'
-#' @keywords mae_save_local
+#' @keywords left_align_plot
 #' @examples
 #' myplot <- ggplot(iris) +
 #'              geom_point(aes(x = Sepal.Width, y = Sepal.Length))
 #'
 #'
-#' mae_save_local(x = myplot,
+#' left_align_plot(x = myplot,
 #'          source_name = "The source for my data",
 #'          logo_image_path = "path_to_logo.png
 #' )
 #'
 #' @export
 
-mae_save_local <- function(x,
+left_align_plot <- function(x,
                            source_name,
                            logo_image_path = file.path(system.file("extdata", package = 'maecharts'),"dh-logo.png")) {
 
