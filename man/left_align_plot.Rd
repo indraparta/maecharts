@@ -27,4 +27,14 @@ Running this function will save your plot with the correct guidelines for public
 It will left align your title, subtitle and source, add the MAE blocks at the bottom right.
 This function is useful for loading plots in rmarkdowns with the DH watermark
 }
+\examples{
+myplot <- ggplot2::ggplot(iris) +
+             ggplot2::geom_point(ggplot2::aes(x = Sepal.Width, y = Sepal.Length))
+
+
+left_align_plot(x = myplot,
+         source_name = "The source for my data"
+)
+
+}
 \keyword{left_align_plot}

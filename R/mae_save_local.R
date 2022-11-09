@@ -11,7 +11,7 @@ create_footer <- function (source_name, logo_image_path) {
   #Make the footer
   footer <- grid::grobTree(grid::textGrob(source_name,
                                           x = 0.004, hjust = 0, gp = grid::gpar(fontsize = 26, lineheight = .5, fontfamily = "VIC")),
-                           grid::rasterGrob(png::readPNG(logo_image_path), x = 1 - 0.04, y = 0.5))
+                           grid::rasterGrob(png::readPNG(logo_image_path), x = 1 - 0.07, y = 0.5))
   return(footer)
 
 }
@@ -44,19 +44,19 @@ create_line <- function() {
 #'
 #' @keywords mae_save_local
 #' @examples
-#' myplot <- ggplot(iris) +
-#'              geom_point(aes(x = Sepal.Width, y = Sepal.Length))
-#'
-#'
-#' mae_save_local(x = myplot,
-#'          source_name = "The source for my data",
-#'          save_file_path = "rsconnect_plot",
-#'          width_pixels = 640,
-#'          height_pixels = 450,
-#'          logo_image_path = "path_to_logo.png
-#' )
+# myplot <- ggplot(iris) +
+#              geom_point(aes(x = Sepal.Width, y = Sepal.Length))
+#
+#
+# mae_save_local(x = myplot,
+#          source_name = "The source for my data",
+#          save_file_path = "rsconnect_plot.png",
+#          width_pixels = 640,
+#          height_pixels = 450
+# )
 #'
 #' @export
+
 mae_save_local <- function(x,
                            source_name,
                            save_file_path,
@@ -76,7 +76,7 @@ mae_save_local <- function(x,
   line <- create_line()
 
   #Draw your left-aligned grid
-  plot_grid <- x / line / footer + patchwork::plot_layout(nrow = 3, heights = c(1, 0.0045, 0.0045))
+  plot_grid <- x / line / footer + patchwork::plot_layout(nrow = 3, heights = c(1, 0.03, 0.03))
 
   ## Return (invisibly) a copy of the graph. Can be assigned to a
   ## variable or silently ignored.

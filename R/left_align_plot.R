@@ -33,13 +33,12 @@ create_line <- function() {
 #'
 #' @keywords left_align_plot
 #' @examples
-#' myplot <- ggplot(iris) +
-#'              geom_point(aes(x = Sepal.Width, y = Sepal.Length))
+#' myplot <- ggplot2::ggplot(iris) +
+#'              ggplot2::geom_point(ggplot2::aes(x = Sepal.Width, y = Sepal.Length))
 #'
 #'
 #' left_align_plot(x = myplot,
-#'          source_name = "The source for my data",
-#'          logo_image_path = "path_to_logo.png"
+#'          source_name = "The source for my data"
 #' )
 #'
 #' @export
