@@ -1,6 +1,6 @@
 Package: maecharts
 Title: ggplot functionality for the Modelling and Analytical Epidemiology (MAE) team
-Version: 1.0.0
+Version: 1.0.1
 Authors@R: 
     person("Indra", "Parta", , "indra.parta@health.vic.gov.au", role = c("aut", "cre"),
            comment = c(ORCID = "YOUR-ORCID-ID"))
