@@ -30,25 +30,75 @@ mae_contrast <- list(
   "mae_red3"   = "#CC12194C"
 
 )
+mae_contrast <- list(
 
+  "mae_blue1"  = "#0E6CA6",
+  "mae_blue2"  = "#0E6CA699",
+  "mae_blue3"  = "#0E6CA64C",
+  "mae_red1"   = "#CC1219",
+  "mae_red2"   = "#CC121999",
+  "mae_red3"   = "#CC12194C"
+
+)
+
+ORTRTA_categorical <- list(
+
+  "dark_blue" = "#1e1447",
+  "blue"      = "#1154a0",
+  "purple"    = "#822c90",
+  "pink"      = "#ee4980",
+  "orange"    = "#f19620",
+  "yellow"    = "#f2e403"
+
+)
+
+ORTRTA_sequential <- list(
+
+  "dark_blue"  = "#1e1447",
+  "blue"       = "#1154a0",
+  "light_blue" = "#822c90",
+  "teal"       = "#ee4980",
+  "light_teal" = "#f19620",
+  "grey"       = "#a9a9a9"
+
+)
+
+ORTRTA_contrast <- list(
+
+  "dark_blue" = "#1e1447",
+  "blue"      = "#1154a0",
+  "teal"      = "#2cbec5",
+  "purple"    = "#822c90",
+  "pink"      = "#ee4980",
+  "orange"    = "#f19620"
+
+)
 
 mae_pal <- function(
   num_highlight_colours = 2,
   direction = TRUE,
-  type = "categorical"
+  type = "categorical",
+  mae = T
 ) {
 
   function(n) {
 
     if (n > 6) warning("mae Colour Palette only has 6 colours.")
 
-    if (type == "categorical"){
+    if (type == "categorical" & mae == T){
       colours <- mae_categorical
-    } else if (type == "sequential"){
+    } else if (type == "sequential" & mae == T){
       colours <- mae_sequential
-    } else if (type == "contrast"){
+    } else if (type == "contrast" & mae == T){
       colours <- mae_contrast
+    } else if (type == "categorical" & mae != T){
+      colours <- ORTRTA_categorical
+    } else if (type == "sequential" & mae != T){
+      colours <- ORTRTA_sequential
+    } else if (type == "contrast" & mae != T){
+      colours <- ORTRTA_contrast
     }
+
 
     if (num_highlight_colours == 1 & type == "categorical") {
       colours[c(2, 3)] <- "#a9a9a9"
@@ -114,10 +164,10 @@ mae_pal <- function(
 #' @examples
 #' \dontrun{
 #' Use categorical for distinct categories
-#' iris %>%
-#'   ggplot() +
-#'   geom_point(aes(x = Sepal.Width, y = Sepal.Length, colour = Species)) +
-#'   scale_colour_mae(type = "categorical")
+# iris %>%
+#   ggplot() +
+#   geom_point(aes(x = Sepal.Width, y = Sepal.Length, colour = Species)) +
+#   scale_colour_mae(type = "categorical")
 #'
 #' Use sequential for continuous data
 #' diamonds %>%
@@ -147,11 +197,12 @@ scale_fill_mae <- function(
   num_highlight_colours = 2,
   direction = TRUE,
   type = "categorical",
+  mae = T,
   ...
 ) {
   ggplot2::discrete_scale(
     "fill", "mae",
-    mae_pal(num_highlight_colours, direction, type),
+    mae_pal(num_highlight_colours, direction, type, mae),
     ...
   )
 }

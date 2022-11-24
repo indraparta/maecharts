@@ -31,22 +31,62 @@ mae_contrast <- list(
 
 )
 
+ORTRTA_categorical <- list(
+
+  "dark_blue" = "#1e1447",
+  "blue"      = "#1154a0",
+  "purple"    = "#822c90",
+  "pink"      = "#ee4980",
+  "orange"    = "#f19620",
+  "yellow"    = "#f2e403"
+
+)
+
+ORTRTA_sequential <- list(
+
+  "dark_blue"  = "#1e1447",
+  "blue"       = "#1154a0",
+  "light_blue" = "#822c90",
+  "teal"       = "#ee4980",
+  "light_teal" = "#f19620",
+  "grey"       = "#a9a9a9"
+
+)
+
+ORTRTA_contrast <- list(
+
+  "dark_blue" = "#1e1447",
+  "blue"      = "#1154a0",
+  "teal"      = "#2cbec5",
+  "purple"    = "#822c90",
+  "pink"      = "#ee4980",
+  "orange"    = "#f19620"
+
+)
+
 mae_pal <- function(
   num_highlight_colours = 2,
   direction = TRUE,
-  type = "categorical"
+  type = "categorical",
+  mae = T
 ) {
 
   function(n) {
 
     if (n > 6) warning("mae Colour Palette only has 6 colours.")
 
-    if (type == "categorical"){
+    if (type == "categorical" & mae == T){
       colours <- mae_categorical
-    } else if (type == "sequential"){
+    } else if (type == "sequential" & mae == T){
       colours <- mae_sequential
-    } else if (type == "contrast"){
+    } else if (type == "contrast" & mae == T){
       colours <- mae_contrast
+    } else if (type == "categorical" & mae != T){
+      colours <- ORTRTA_categorical
+    } else if (type == "sequential" & mae != T){
+      colours <- ORTRTA_sequential
+    } else if (type == "contrast" & mae != T){
+      colours <- ORTRTA_contrast
     }
 
     if (num_highlight_colours == 1 & type == "categorical") {
@@ -151,11 +191,12 @@ scale_colour_mae <- function(
   num_highlight_colours = 2,
   direction = TRUE,
   type = "categorical",
+  mae = TRUE,
   ...
 ) {
   ggplot2::discrete_scale(
     "colour", "mae",
-    mae_pal(num_highlight_colours, direction, type),
+    mae_pal(num_highlight_colours, direction, type, mae),
     ...
   )
 }

@@ -64,8 +64,8 @@ theme_mae <- function() {
     axis.text = ggplot2::element_text(family=font,
                                       size=26,
                                       color="#222222"),
-    axis.text.x = ggplot2::element_text(margin=ggplot2::margin(t = 0)),
-    axis.ticks = ggplot2::element_blank(),
+    axis.text.x = ggplot2::element_text(margin=ggplot2::margin(t = 5)),
+    axis.ticks = ggplot2::element_line(),
     axis.line = ggplot2::element_blank(),
 
     #Grid lines

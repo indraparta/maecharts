@@ -25,10 +25,6 @@ This argument adds the MAE colour palette to ggplot charts. The MAE colour palet
 \examples{
 \dontrun{
 Use categorical for distinct categories
-iris \%>\%
-  ggplot() +
-  geom_point(aes(x = Sepal.Width, y = Sepal.Length, colour = Species)) +
-  scale_colour_mae(type = "categorical")
 
 Use sequential for continuous data
 diamonds \%>\%
