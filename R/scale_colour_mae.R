@@ -33,34 +33,33 @@ mae_contrast <- list(
 
 ORTRTA_categorical <- list(
 
-  "dark_blue" = "#1e1447",
-  "blue"      = "#1154a0",
-  "purple"    = "#822c90",
-  "pink"      = "#ee4980",
-  "orange"    = "#f19620",
-  "yellow"    = "#f2e403"
+  "ORTRTA_dark_blue" = "#1e1447",
+  "ORTRTA_purple"    = "#822c90",
+  "ORTRTA_pink"      = "#ee4980",
+  "ORTRTA_orange"    = "#f19620",
+  "ORTRTA_yellow"    = "#f2e403"
 
 )
 
 ORTRTA_sequential <- list(
 
-  "dark_blue"  = "#1e1447",
-  "blue"       = "#1154a0",
-  "light_blue" = "#822c90",
-  "teal"       = "#ee4980",
-  "light_teal" = "#f19620",
-  "grey"       = "#a9a9a9"
+  "ORTRTA_orange"  = "#FCEAD2",
+  "ORTRTA_orange2" = "#F3AB4C",
+  "ORTRTA_orange3" = "#F6C079",
+  "ORTRTA_orange4" = "#F3AB4C",
+  "ORTRTA_orange5" = "#FCEAD2",
+  "grey"           = "#a9a9a9"
 
 )
 
 ORTRTA_contrast <- list(
 
-  "dark_blue" = "#1e1447",
-  "blue"      = "#1154a0",
-  "teal"      = "#2cbec5",
-  "purple"    = "#822c90",
-  "pink"      = "#ee4980",
-  "orange"    = "#f19620"
+  "ORTRTA_dark_blue" = "#1e1447",
+  "ORTRTA_blue"      = "#1154a0",
+  "ORTRTA_teal"      = "#2cbec5",
+  "ORTRTA_purple"    = "#822c90",
+  "ORTRTA_pink"      = "#ee4980",
+  "ORTRTA_orange"    = "#f19620"
 
 )
 
