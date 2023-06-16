@@ -213,7 +213,7 @@ model_fit <- glm(ten_year_risk_CHD ~ sex + age_group + bp_meds + prev_bp + diabe
 ```
 
 # Creating the forest plot 
-- We can then create a patchwork layout and 
+- We can then create a patchwork layout and produce the forest plot 
 ```{r}
 
 plot_layout <- layout <- c(
@@ -240,13 +240,14 @@ model_fp <- create_forest_plot_annotated(data = model_fit,
                                           plot_subtitle = "",
                                           plot_layout = plot_layout
 )
-model_fp
 
+# Save using mae_save_local() without a logo
 mae_save_local(model_fp,
                source_name = "",
                save_file_path = file.path("chart_examples", "forest_plot.png"),
                logo_image_path = file.path("chart_examples/no_logo.png"))
 
+model_fp
 ```
 
 
