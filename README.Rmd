@@ -12,11 +12,16 @@ This repo contains the functions of the `maecharts` package, which once installe
 `maecharts` is not on CRAN, so you will have to install it directly from github using `devtools`. 
 
 If you do not have the `devtools` package installed, you will have to run the first line in the code below as well. 
+If you do not have the `patchwork` or `data.table` packages installed, you should also install these
+
 
 ```
 # install.packages('devtools')
 devtools::install_github('indraparta/maecharts')
 
+<!-- library(patchwork) -->
+<!-- library(data.table) -->
+ 
 mae_blue <- "#0e6ca6"
 mae_red <- "#cc1219"
 mae_purple <-"#5f4b8b"
@@ -91,6 +96,7 @@ knitr::opts_chunk$set(warning = FALSE, message = FALSE, eval = FALSE)
 library(tidyverse)
 library(devtools)
 library(lubridate)
+library(maecharts)
 load_all()
 ```
 
@@ -173,5 +179,74 @@ Titanic %>%
   labs(title = "Survivors of the titanic", subtitle = "By sex and passenger class", x = "", y = "")
   
 ```
+## Logistic regression outputs 
+- We can also create forest plots from the output of a binomial (logistic) regression
+- The functions allow us to annotate the plot via patchwork
+- Let's first download an [example dataset][https://www.kaggle.com/datasets/aasheesh200/framingham-heart-study-dataset]. Briefly, "the Framingham" heart disease dataset includes over 4,240 records,16 columns and 15 attributes. The goal of the dataset is to predict whether the patient has 10-year risk of future (CHD) coronary heart disease" (Kaggle)
+```{r}
 
-![](chart_examples/titanic_2.png){width=650 height=450}
+heart_disease <- read_csv(file.path("data", "framingham.csv")) %>% 
+  mutate(
+    male = as_factor(ifelse(male == 1, "Male", "Female")),
+    current_smoker = as_factor(ifelse(currentSmoker == 0, "Non-Smoker", "Smoker")),
+    bp_meds = as_factor(ifelse(BPMeds == 0, "NoBPMeds", "BPMeds")),
+    prev_bp = as_factor(ifelse(prevalentHyp == 0, "NoHyp","Hyp")),
+    diabetes = as_factor(ifelse(diabetes == 0, "Non-Diabetic", "Diabetic")),
+    ten_year_risk_CHD = as_factor(ifelse(TenYearCHD == 0,  "NoRisk", "10YearRisk"))
+  ) %>% 
+  rename(
+    sex = male
+  ) %>% 
+  select(sex, age, current_smoker, bp_meds, prev_bp, diabetes, ten_year_risk_CHD) %>% 
+  mutate(
+    age_group = case_when(
+      age >= 0 & age <= 39 ~ "<40 years", 
+      age >= 40 & age <= 49 ~ "40-49 years", 
+      age >= 50 & age <= 59 ~ "50-59 years",
+      age >= 60  ~ "60+ years"
+    )
+  )
+
+# Run model 
+model_fit <- glm(ten_year_risk_CHD ~ sex + age_group + bp_meds + prev_bp + diabetes, family = binomial(link = 'logit'), data = heart_disease)
+
+```
+
+# Creating the forest plot 
+- We can then create a patchwork layout and 
+```{r}
+
+plot_layout <- layout <- c(
+  area(t = 0, l = 1, b = 30, r = 90),
+  area(t = 0, l = 91, b = 30, r = 170),
+  area(t = 0, l = 171, b = 30, r = 220),
+  area(t = 1, l = 221, b = 30, r = 600)
+)
+
+model_fp <- create_forest_plot_annotated(data = model_fit,
+                                          levels =  c("SexMale", "SexFemale",
+                                                      "age_group<40 years", "age_group40-49 years", "age_group50-59 years", "age_group60+ years",
+                                                      "bp_medsNoBPMeds", "bp_medsBPMeds",
+                                                      "prev_bpNoHyp", "prev_bpHyp",
+                                                      "diabetesNon-Diabetic", "diabetesDiabetic"
+                                          ),
+                                          labels =  c("Male", "Female",
+                                                      "<40 years", "40-49 years", "50-59 years", "60+ years",
+                                                      "No BP Meds", "On BP Meds",
+                                                      "No Hypertention", "Hypertention",
+                                                      "Non-Diabetic", "Diabetic"
+                                          ),
+                                          plot_title = "",
+                                          plot_subtitle = "",
+                                          plot_layout = plot_layout
+)
+model_fp
+
+mae_save_local(model_fp,
+               source_name = "",
+               save_file_path = file.path("chart_examples", "forest_plot.png"),
+               logo_image_path = file.path("chart_examples/no_logo.png"))
+
+```
+
+
